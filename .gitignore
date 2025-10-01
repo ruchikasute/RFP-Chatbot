@@ -1,0 +1,13 @@
+# Environment variables
+.env
+# Streamlit secrets (these should be set securely on Streamlit Cloud)
+.streamlit/secrets.toml
+# Folders created by Python/PyTorch/etc.
+__pycache__/
+*.pyc
+# Folders created by the model loading (if any)
+.vscode/
+.ipynb_checkpoints
+.idea
+# Specific folders for sentence-transformers models if they cache locally (less common now)
+.cache/
