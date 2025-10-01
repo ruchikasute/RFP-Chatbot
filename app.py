@@ -2,20 +2,26 @@
 
 from dotenv import load_dotenv
 load_dotenv()
+import os
 import streamlit as st
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from openai import AzureOpenAI
-from Modules import creds, doc_utils
+from Modules import  doc_utils, creds
 
 # ------------------------------
 # Initialize Azure OpenAI client
-# ------------------------------
+# # ------------------------------
+api_key = st.secrets.get("AZURE_OPENAI_KEY") or os.getenv("AZURE_OPENAI_KEY")
+endpoint = st.secrets.get("AZURE_OPENAI_ENDPOINT") or os.getenv("AZURE_OPENAI_ENDPOINT")
+api_version = st.secrets.get("AZURE_OPENAI_API_VERSION") or os.getenv("AZURE_OPENAI_API_VERSION", "2023-03-15-preview")
+
 client = AzureOpenAI(
-    api_key=creds.AZURE_OPENAI_KEY,
-    azure_endpoint=creds.AZURE_OPENAI_ENDPOINT,
-    api_version=creds.AZURE_OPENAI_API_VERSION
+    api_key=api_key,
+    azure_endpoint=endpoint,
+    api_version=api_version
 )
+
 
 # ------------------------------
 # Streamlit page config
