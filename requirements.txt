@@ -1,8 +1,7 @@
 streamlit
 sentence-transformers
 scikit-learn
-openai>=1.0.0
-pypdf>=3.0.0
-python-docx
-PyPDF2
+openai
 python-dotenv
+PyPDF2
+python-docx
